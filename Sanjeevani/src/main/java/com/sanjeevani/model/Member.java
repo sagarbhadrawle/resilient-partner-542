@@ -2,6 +2,8 @@ package com.sanjeevani.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,12 +38,16 @@ public class Member {
 	 
 	 private LocalDate dateOfRegistration = LocalDate.now();
 	 
-	 @OneToOne(mappedBy = "member",cascade = CascadeType.ALL)
-	 private IdCard idcard;
+	 @JsonIgnore
+	 @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+	 private User user;
 	
 	 @OneToOne(mappedBy = "memberId", cascade = CascadeType.ALL)
 	 private Appointment appointment;
 	 
+	 @JsonIgnore
+	 @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+	 private Vaccine vaccine;
 	 
 	 
 	 
