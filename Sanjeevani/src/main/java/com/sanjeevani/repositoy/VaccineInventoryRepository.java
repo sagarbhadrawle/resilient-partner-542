@@ -10,5 +10,7 @@ import com.sanjeevani.model.VaccineInventory;
 public interface VaccineInventoryRepository extends JpaRepository<VaccineInventory, Integer> {
 
 	
+	public List<VaccineInventory> findByDate(LocalDate date);
+	public List<VaccineInventory> findByVaccineId(Integer vaccineId);
 	
 }

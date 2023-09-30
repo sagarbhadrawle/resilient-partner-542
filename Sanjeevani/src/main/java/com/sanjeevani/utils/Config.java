@@ -47,7 +47,16 @@ public class Config {
 				.authorizeHttpRequests(auth -> {
 
 					auth.requestMatchers(HttpMethod.POST, "/users").permitAll()
-						     .anyRequest()
+						        .requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll() // this is for JWT on Swagger 
+							.requestMatchers(HttpMethod.POST, "/users/admin","/vaccines/{memberId}","/vaccineinventories/{vaxCenterId}","/vaccinationCenters","/members/{userId}").hasRole("ADMIN")
+							.requestMatchers(HttpMethod.POST, "/appointments/{memberId}/{vaxCenterId}","/members/{userId}").hasRole("USER")
+							.requestMatchers(HttpMethod.GET, "/getallmembers/{pageNumber}/{pageSize}","/getallusers/{pageNumber}/{pageSize}","/vaccinationCenters/{pageNumber}/{pageSize}","/vaccines/{pageNumber}/{pageSize}","/vaccineinventories/{pageNumber}/{pageSize}","/vaccineinventories/bycenter/{centerId}","/vaccineinventories/date/{date}","/vaccineinventories/id/{vaccineId}").hasRole("ADMIN")
+							.requestMatchers(HttpMethod.GET, "/appointments/{bookingId}","/members/{memberId}","/members/aadhar/{aadharNo}","/members/pan/{panNo}","/users/{userId}","/users/aadhar/{AadharNo}","/users/pan/{panNo}","/vaccinationCenters/{centerId}").hasAnyRole("USER", "ADMIN")
+							.requestMatchers(HttpMethod.PUT, "/appointments/{bookingId}","/users/{userId}").hasRole("USER")
+							.requestMatchers(HttpMethod.PUT, "/members/{memberId}","/users/{userId}","/vaccinationCenters/{centerId}","/vaccines/{vaccineId}","/vaccineinventories/{vaccineInvenId}").hasRole("ADMIN")
+							.requestMatchers(HttpMethod.DELETE,"/appointments/{bookingId}","/users/{userId}").hasRole("USER")
+							.requestMatchers(HttpMethod.DELETE, "/members/{memberId}","/users/{userId}","/vaccinationCenters/{centerId}","/vaccines/{vaccineId}","/vaccineinventories/{vaccineInvenId}").hasRole("ADMIN")
+							.anyRequest()
 							.authenticated();
 
 				})

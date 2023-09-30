@@ -11,18 +11,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
-@Getter
-@Setter
+@Data
 public class Member {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
+
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 private Integer id;
 	 
 	 @Column(columnDefinition = "boolean default false")
 	 private Boolean dose1Status;
@@ -34,21 +31,21 @@ public class Member {
 	 
 	 private LocalDate dose2Date;
 	 
-	 private String MobileNo;
+     private Long mobNo;
 	 
 	 private LocalDate dateOfRegistration = LocalDate.now();
 	 
 	 @JsonIgnore
-	 @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+	 @OneToOne(cascade = CascadeType.ALL)
 	 private User user;
-	
+	 
+	 @JsonIgnore
 	 @OneToOne(mappedBy = "memberId", cascade = CascadeType.ALL)
 	 private Appointment appointment;
 	 
 	 @JsonIgnore
 	 @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
 	 private Vaccine vaccine;
-	 
 	 
 	 
 }

@@ -29,8 +29,8 @@ public class JWTUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-		
+//		Integer ID = Integer.parseInt(username);
+		System.out.println(username);
 		Optional<User> opt = ur.findByAadharNo(username);
 
 		if (opt.isPresent()) {
@@ -44,7 +44,7 @@ public class JWTUserDetailsService implements UserDetailsService {
 			SimpleGrantedAuthority sga = new SimpleGrantedAuthority(user.getRole());
 			authorities.add(sga);
 
-			return new org.springframework.security.core.userdetails.User(username, null, authorities);
+			return new org.springframework.security.core.userdetails.User(username, user.getPassword(), authorities);
 
 		} else
 			throw new BadCredentialsException("User Details not found with this username: " + username);
