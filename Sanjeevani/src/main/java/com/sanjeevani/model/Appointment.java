@@ -2,8 +2,6 @@ package com.sanjeevani.model;
 
 import java.time.LocalDate;
 
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -21,12 +19,12 @@ import lombok.Data;
 @Entity
 @Data
 public class Appointment {
-	
+
 	 @Id
-	 @GeneratedValue(strategy =  GenerationType.UUID)
-	 private String bookingId;
+	 @GeneratedValue(strategy =  GenerationType.IDENTITY)
+	 private Integer bookingId;
 	 
-	 private String mobileNo;
+	 private Long mobileNo;
 	 
 	 private LocalDate dateOfBooking;
 	 
@@ -40,10 +38,9 @@ public class Appointment {
 	 @JoinColumn(name="memberid")
 	 private Member memberId;
 	 
-	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name ="vaccineCenter_id" )
-	private VaccinationCenter vaccineCenter;
-	
-	
+	 @JsonIgnore
+	 @ManyToOne(cascade = CascadeType.ALL)
+	 @JoinColumn(name ="vaccineCenter_id" )
+	 private VaccinationCenter vaxCenter;
+	 
 }

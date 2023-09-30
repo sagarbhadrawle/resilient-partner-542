@@ -1,7 +1,5 @@
 package com.sanjeevani.model;
 
-
-
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,39 +15,29 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-
 @Data
 @Entity
 public class VaccinationCenter {
-	
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer centerId;
-	
-	@Size(min = 2, max = 40)
-    private String centerName;
-	
-	@Size(min = 2, max = 40)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer centerId;
+	@Size(min = 2, max = 80)
+	private String centerName;
+	@Size(min = 2, max = 80)
 	private String address;
-	
 	@Size(min = 2, max = 80)
-    private String city;
-	
+	private String city;
 	@Size(min = 2, max = 80)
-    private String state;
-	
-    @Pattern(regexp = "^[1-9][0-9]{5}$", message = "Invalid Indian PIN code")
-    private String pinCode;
-    
-    @JsonIgnore
-    @OneToMany(mappedBy = "vaccineCenter" , cascade = CascadeType.ALL)
-    private List<Appointment> appointments;
-    
+	private String state;
+	@Pattern(regexp = "^[1-9][0-9]{5}$", message = "Invalid Indian PIN code")
+	private String pinCode;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "vaxCenter", cascade = CascadeType.ALL)
+	private List<Appointment> appointments;
 
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
-	private VaccineInventory vacInventory;
-    
-	
+	private VaccineInventory vaxInventory;
 }
