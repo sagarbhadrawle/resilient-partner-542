@@ -110,13 +110,7 @@ This Application Consist 7 Modules
  - [✅] Tested Using Postman<br/>
  - [✅] Tested Using Swagger<br/>
  <p align="right">(<a href="#readme-top">back to top</a>)</p>
- <h2>Contributors</h2> <br/>
- - <a href="https://github.com/Guyvinay" target="_blank">VINAY KUMAR SINGH</a> <br/>
- - <a href="https://github.com/anuragjatofficial" target="_blank">Anurag Chaudhary</a><br/>
- - <a href="https://github.com/vaishkiyarminal001" target="_blank">Minal Kumari</a> <br/>
- - <a href="https://github.com/Rupesh0913" target="_blank">Rupesh Kumar Sinha</a> <br/>
- - <a href="https://github.com/Shashanksarojj" target="_blank">Shashank Dwivedi</a> <br/>
- <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
  
 <h2>Acknowledgments</h2>
 Your feedback matters! Help us enhance our application to deliver an improved and user-focused service.
