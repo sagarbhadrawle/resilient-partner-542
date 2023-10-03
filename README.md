@@ -5,7 +5,7 @@
 
 
   <h1 align="center">Sanjeevani+</h1>
-<div  align="center" ><img src = "https://github.com/Guyvinay/potent-voyage-8716/assets/66843256/880ae171-c100-4651-9433-97cd32148644"/></div>
+
 
 
   <h3 align="center">Covid-19 Vaccination Registration Using REST Api</h3>
