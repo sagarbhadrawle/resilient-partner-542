@@ -34,7 +34,7 @@ public class MemberController {
 
 	@GetMapping("/getallmembers/{pageNumber}/{pageSize}")
 	public ResponseEntity<List<Member>> getMemberList(@PathVariable int pageNumber, @PathVariable int pageSize){
-		log.info("Retrieves a list of Members");
+		log.info("Retrieves list of Members");
 		Pageable pageRequest = PageRequest.of(pageNumber-1, pageSize);
 		return new ResponseEntity<List<Member>>(memberService.getAllMember(pageRequest),HttpStatus.OK);
 	}

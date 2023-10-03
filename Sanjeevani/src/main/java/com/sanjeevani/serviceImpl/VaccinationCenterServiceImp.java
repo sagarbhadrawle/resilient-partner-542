@@ -16,7 +16,7 @@ import com.sanjeevani.service.VaccinationCenterService;
 @Service
 public class VaccinationCenterServiceImp implements VaccinationCenterService {
 
-	// Injects a dependency into the class
+
 	private VaccinationCenterRepository vaccinationCenterRepository;
 
 	@Autowired
@@ -25,7 +25,7 @@ public class VaccinationCenterServiceImp implements VaccinationCenterService {
 		this.vaccinationCenterRepository = vaccinationCenterRepository;
 	}
 
-	// Retrieves a list of all vaccination centers from the repository
+
 	@Override
 	public List<VaccinationCenter> getAllVaccinationCenter(Pageable pageable) {
 		
@@ -35,7 +35,7 @@ public class VaccinationCenterServiceImp implements VaccinationCenterService {
 		return list.toList();
 	}
 
-	// Retrieves a specific vaccination center by its ID from the repository
+
 	@Override
 	public VaccinationCenter getVaccination(Integer centerId) {
 		if (centerId == null)
@@ -46,7 +46,7 @@ public class VaccinationCenterServiceImp implements VaccinationCenterService {
 		return optional.get();
 	}
 
-	// Adds a new vaccination center to the repository
+
 	@Override
 	public VaccinationCenter addVaccinationCenter(VaccinationCenter center) {
 		if (center == null)
@@ -54,7 +54,7 @@ public class VaccinationCenterServiceImp implements VaccinationCenterService {
 		return vaccinationCenterRepository.save(center);
 	}
 
-	// Updates an existing vaccination center's information in the repository.
+	
 	@Override
 	public VaccinationCenter updateVaccineCenter(Integer centerId, VaccinationCenter center) {
 		if (centerId == null)
@@ -65,7 +65,7 @@ public class VaccinationCenterServiceImp implements VaccinationCenterService {
 		return vaccinationCenterRepository.save(center);
 	}
 
-	// Deletes a vaccination center from the repository based on its ID.
+	
 	@Override
 	public Boolean deleteVaccinationCenter(Integer centerId) {
 		if (centerId == null)

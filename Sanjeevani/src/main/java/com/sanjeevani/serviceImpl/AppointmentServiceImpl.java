@@ -39,7 +39,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 	}
 
 	@Override
-	public Appointment addAppointment(Integer memberId, Integer vaxCenterId, Appointment appointment) {
+	public String addAppointment(Integer memberId, Integer vaxCenterId, Appointment appointment) {
 		if (appointment == null)
 			throw new AppointmentNotFoundException("Appointment couldn't saved");
 
@@ -57,7 +57,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 		appointment.setVaxCenter(vaxCenter);
 		appointment.setSlot(Slot.SLOT1);
 		Appointment appoint = appointmentRepository.save(appointment);
-		return appoint;
+		return "appointment book successfully";
 	}
 
 	@Override

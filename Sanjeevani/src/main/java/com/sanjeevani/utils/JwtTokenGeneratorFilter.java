@@ -1,6 +1,7 @@
 package com.sanjeevani.utils;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -33,17 +34,17 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
 
 		if (authentication != null) {
 
-			SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes());
+			SecretKey key = Keys.hmacShaKeyFor(Base64.getEncoder().encode(SecurityConstants.JWT_KEY.getBytes()));
 
-			String jwt = Jwts.builder().setIssuer("Covid_19").setSubject("JWT Token")
+			String jwt = Jwts.builder().setIssuer("Sanjeevani").setSubject("JWT Token")
 					.claim("username", authentication.getName())
 					.claim("authorities", convertToString(authentication.getAuthorities())).setIssuedAt(new Date())
 					.setExpiration(new Date(new Date().getTime() + 85000000)).signWith(key).compact();
 
 			response.setHeader(SecurityConstants.JWT_HEADER, jwt);
 
-			Cookie jwtCookie = new Cookie(SecurityConstants.JWT_HEADER, jwt); // Replace jwt with your actual JWT token
-			jwtCookie.setMaxAge((int) (System.currentTimeMillis() + 30000000)); // Set cookie expiration time
+			Cookie jwtCookie = new Cookie(SecurityConstants.JWT_HEADER, jwt);
+			jwtCookie.setMaxAge((int) (System.currentTimeMillis() + 30000000));
 			jwtCookie.setPath("/");
 
 			response.addCookie(jwtCookie);

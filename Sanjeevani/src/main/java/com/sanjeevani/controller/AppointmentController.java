@@ -16,17 +16,7 @@ import com.sanjeevani.model.Appointment;
 import com.sanjeevani.service.AppointmentService;
 
 
-/*
- 
- {
- "mobileNo":3456780987,
- "dateOfBooking":"2020-07-06",
- "slot":"Slot1",
- "bookingStatus":false,
- }
- 
- 
- */
+
 
 @RestController
 @CrossOrigin("*")
@@ -41,8 +31,8 @@ public class AppointmentController {
 	}
 	
 	@PostMapping(value = "/appointments/{memberId}/{vaxCenterId}")
-	public ResponseEntity<Appointment> addAppointment(@PathVariable Integer memberId , @PathVariable Integer vaxCenterId,@RequestBody Appointment appointment){
-		return  new ResponseEntity<Appointment>(appointmentService.addAppointment(memberId , vaxCenterId , appointment) , HttpStatus.ACCEPTED);
+	public ResponseEntity<String> addAppointment(@PathVariable Integer memberId , @PathVariable Integer vaxCenterId,@RequestBody Appointment appointment){
+		return  new ResponseEntity<>(appointmentService.addAppointment(memberId , vaxCenterId , appointment) , HttpStatus.ACCEPTED);
 	}
 	
 	@PutMapping(value = "/appointments/{bookingId}")

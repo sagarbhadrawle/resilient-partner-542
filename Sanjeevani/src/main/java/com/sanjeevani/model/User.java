@@ -1,8 +1,11 @@
 package com.sanjeevani.model;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -38,7 +41,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-public class User {
+public class User  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,5 +78,7 @@ public class User {
 	@JsonIgnore
 	@OneToOne
 	private Member member;
+
+
 
 }
